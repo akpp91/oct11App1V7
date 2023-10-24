@@ -31,7 +31,7 @@ const AuthForm = ({HeaderText , errorMessage , onSubmit , submitButtonText, navi
       </Spacer>
   {errorMessage ?<Text style={styles.errorMessage}>{errorMessage}</Text> :null}
       <Spacer>
-      <Button title={submitButtonText} onPress={()=>{onSubmit({email,password}, nav)}}/>
+      <Button title={submitButtonText} onPress={()=>{onSubmit({email,password})}}/>
       </Spacer>
 
     </View>

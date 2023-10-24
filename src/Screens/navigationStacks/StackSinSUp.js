@@ -33,6 +33,8 @@ export default function MyStack() {
         component={SignInScreen}
         options={{
           title: 'SignInScreen',
+          headerShown: false         
+          
         }}
       />
       <Stack.Screen
