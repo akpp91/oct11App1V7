@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import MyStack from './src/Screens/navigationStacks/StackSinSUp';
 import { Provider as AuthProvider } from './src/Screens/context/AuthContext';
-import { setNavigator } from './src/Screens/navigationRef';
+
 
 
 // const switchNavigator = createNativeStackNavigator({
@@ -25,8 +25,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AuthProvider>
-         <MyStack ref={(navigator)=>
-          { setNavigator(navigator)}}/>
+         <MyStack />
       </AuthProvider>
     </NavigationContainer>
   
