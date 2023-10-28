@@ -1,5 +1,5 @@
 import { StyleSheet,View } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 
 import { Context as AuthContext } from './context/AuthContext'
@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 
 
 const SignUpScreen = ({navigation}) => {
-  const {state , signup , clearErrorMessage ,tryLocalSignIn }=useContext(AuthContext);
+  const {state , signup , clearErrorMessage  }=useContext(AuthContext);
   const navigation1 = useNavigation();
 
   
@@ -18,7 +18,7 @@ useEffect(() => {
     const unSubsribeBlur = navigation1.addListener('focus', () => {
       console.log("Blur event triggered");
       clearErrorMessage();
-      tryLocalSignIn(navigation);
+      
       console.log("clear");
     });
 

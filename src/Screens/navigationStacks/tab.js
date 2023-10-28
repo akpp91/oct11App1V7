@@ -12,7 +12,7 @@ const Tab = createMaterialBottomTabNavigator();
 export default function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="SignInScreen"
+      initialRouteName="TrackListFlow"
       activeColor="#e91e63"
       barStyle={{ backgroundColor: 'tomato' }}
     >
@@ -23,7 +23,10 @@ export default function MyTabs() {
           tabBarLabel: 'TrackListFlow',
           tabBarIcon: ({ color }) => (
             <Icon name="home" color={color} size={26} />
+
           ),
+          
+
         }}
       />
         <Tab.Screen
