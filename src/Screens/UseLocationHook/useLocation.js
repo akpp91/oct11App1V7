@@ -24,7 +24,6 @@ export default (isFocused, state, callback) => {
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) 
       {
-        console.log('You can use the GPS');
         const watchId = Geolocation.watchPosition(
           callback,
           (error) => {
@@ -53,13 +52,14 @@ export default (isFocused, state, callback) => {
     }
   };
 
+ 
+
   useEffect(() => {
-    if (isFocused && state.recording) {
-      console.log("isFocused if");
+    
+    if ( isFocused && state.recording ) {
       requestLocationPermission();
     } else {
         Geolocation.clearWatch(0);
-        console.log("Cleared all watches with 0");
     }
   }, [isFocused ,state.recording]);
 

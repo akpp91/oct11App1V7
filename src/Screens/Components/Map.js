@@ -1,19 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import MapView, { Circle } from 'react-native-maps';
+import MapView, { Circle, Polyline } from 'react-native-maps';
 import { Context as LocationContext } from '../context/LocationContext';
 
 const Map = () => {
   
- const {state} =useContext(LocationContext);
+ const {
+  state: {currentLocation ,  location}
+} =useContext(LocationContext);
 
-  const [latitude, setLatitude] = useState(18.588673633333332); // Initialize with the same initial latitude
-  const [longitude, setLongitude] = useState(73.74461396666668); // Initialize with the same initial longitude
 
 
-  const { currentLocation } = state;
-  
-  if (currentLocation) {
+
+    if (currentLocation) {
     const { coords }=currentLocation;
   }
 
@@ -38,29 +37,35 @@ const Map = () => {
     longitudeDelta: 0.05,
   });
 
-  useEffect(() => {
-    const tenMetersWithDegrees = 0.0001;
-    let counter = 0;
+  // useEffect(() => {
+  //   const tenMetersWithDegrees = 0.0001;
+  //   let counter = 0;
 
-    const updateRegion = () => {
+  //   const updateRegion = () => {
       
-      setLatitude( latitude + counter * tenMetersWithDegrees);
-      setLongitude(longitude + counter * tenMetersWithDegrees);
+  //     setLatitude( latitude + counter * tenMetersWithDegrees);
+  //     setLongitude(longitude + counter * tenMetersWithDegrees);
 
-      setRegion({
-        ...region,
-        latitude: latitude,
-        longitude: longitude,
-      });
-      counter++;
-    };
+  //     setRegion({
+  //       ...region,
+  //       latitude: latitude,
+  //       longitude: longitude,
+  //     });
+  //     counter++;
+  //   };
 
-    const intervalId = setInterval(updateRegion, 1000);
+  //   const intervalId = setInterval(updateRegion, 1000);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
+  const coordinates = 
+  
+  location.map(loc => ({
+    latitude: loc.coords.latitude,
+    longitude: loc.coords.longitude
+  }));
 
  
   return (
@@ -70,10 +75,13 @@ const Map = () => {
       region={region}
     >
       <Circle
-        center={{ latitude, longitude }}
-        radius={150}
+        center={coords}
+        radius={10}
         fillColor="rgba(255,0,0,0.3)"
         strokeWidth={0.5}
+      />
+      <Polyline
+      coordinates={coordinates}
       />
     </MapView>
   );

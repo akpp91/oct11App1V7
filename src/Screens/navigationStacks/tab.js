@@ -22,7 +22,7 @@ export default function MyTabs() {
         options={{
           tabBarLabel: 'TrackListFlow',
           tabBarIcon: ({ color }) => (
-            <Icon name="home" color={color} size={26} />
+            <Icon name="format-list-bulleted" color={color} size={26} />
 
           ),
           
@@ -46,7 +46,7 @@ export default function MyTabs() {
         options={{
           tabBarLabel: 'TrackCreateScreen',
           tabBarIcon: ({ color }) => (
-            <Icon name="account-box" color={color} size={26} />
+            <Icon name="add-box" color={color} size={26} />
           ),
         }}
       />
